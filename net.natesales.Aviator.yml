@@ -59,4 +59,4 @@ modules:
     sources:
       - type: git
         url: https://github.com/natesales/aviator
-        commit: 0f0dd753f0108706fe762fd7024e2f2d64cf22ac
+        commit: af77b4a973f48704aad4d87a0e4af42b83f0ae1a
