@@ -39,8 +39,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/AOMediaCodec/SVT-AV1.git
-        tag: v1.2.1
-        commit: 6e24fb7f5f7438bb04061dc1a159f0c5b882d847
+        tag: v1.4.0
+        commit: 5f32f7b4af71af8501810e4716eb1fbe89d80574
 
   - name: ffmpeg
     config-opts:
