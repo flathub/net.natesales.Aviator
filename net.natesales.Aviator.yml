@@ -76,6 +76,7 @@ modules:
   - name: rav1e
     buildsystem: simple
     sources:
+      - "rav1e-sources.json"
       - type: git
         url: https://github.com/BlueSwordM/rav1e
         commit: 39dc19eff45a57b3f68e5f64c407b789ee41ae9e
@@ -86,6 +87,7 @@ modules:
   - name: av1an
     buildsystem: simple
     sources:
+      - "av1an-sources.json"
       - type: git
         url: https://github.com/natesales/Av1an/
         commit: 8b6c79809fd09175453f5c4d0b856c20f57d4e49
@@ -100,4 +102,4 @@ modules:
     sources:
       - type: git
         url: https://github.com/natesales/aviator
-        commit: 9f434794044993a529f0140b2915b938a8ded5e3
+        commit: 8960fa4c2636b50009485a9941f5399d5b2a7254
