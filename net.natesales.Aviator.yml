@@ -4,6 +4,10 @@ sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
 runtime-version: '43'
 
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+  - org.freedesktop.Sdk.Extension.llvm14
+
 finish-args:
   - --share=ipc
   - --device=dri
