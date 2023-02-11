@@ -88,5 +88,6 @@ modules:
     builddir: true
     buildsystem: meson
     sources:
-      - type: dir
-        path: "."
+      - type: git
+        url: https://github.com/gianni-rosato/aviator
+        commit: 3724b33ee94ef9a110a1b5d5d9b281b29ce087e6
