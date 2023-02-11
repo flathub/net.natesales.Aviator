@@ -2,7 +2,7 @@ app-id: net.natesales.Aviator
 command: aviator
 sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
-runtime-version: "42"
+runtime-version: "43"
 
 finish-args:
   - --share=ipc
@@ -10,6 +10,14 @@ finish-args:
   - --socket=wayland
   - --socket=fallback-x11
   - --filesystem=host
+
+build-options: 
+  append-path: /usr/lib/sdk/rust-stable/bin
+  env: 
+    CARGO_HOME: /run/build/done/cargo
+    PROTOC: /app/bin/protoc
+  prepend-ld-library-path: /usr/lib/sdk/llvm14/lib
+  prepend-path: /usr/lib/sdk/llvm14/bin
 
 cleanup:
   - /include
@@ -39,24 +47,47 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/AOMediaCodec/SVT-AV1.git
-        tag: v1.2.1
-        commit: 6e24fb7f5f7438bb04061dc1a159f0c5b882d847
+        commit: 93fc87b0ff0823d5703d31516cb4093aff86c848
 
   - name: ffmpeg
     config-opts:
-      - "--enable-libdav1d"
-      - "--enable-libsvtav1"
-      - "--enable-libopus"
+      - --enable-static
+      - --enable-gpl
+      - --enable-libdav1d
+      - --enable-libopus
+      - --enable-libsvtav1
     buildsystem: autotools
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-5.1.tar.xz
-        sha256: 55eb6aab5ee235550fa54a33eaf8bf1b4ec66c01453182b12f6a993d75698b03
+        url: http://ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz
+        sha256: 619e706d662c8420859832ddc259cd4d4096a48a2ce1eefd052db9e440eef3dc
+
+  - build-commands:
+    - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+      --prefix=${FLATPAK_DEST} "ffmpeg-python" --no-build-isolation
+    buildsystem: simple
+    name: python3-ffmpeg-python
+    sources:
+    - sha256: ac441a0404e053f8b6a1113a77c0f452f1cfc62f6344a769475ffdc0f56c23c5
+      type: file
+      url: https://files.pythonhosted.org/packages/d7/0c/56be52741f75bad4dc6555991fabd2e07b432d333da82c11ad701123888a/ffmpeg_python-0.2.0-py3-none-any.whl
+    - sha256: 34a17436ed1e96697a86f9de3d15a3b0be01d8bc8de9c1dffd59fb8234ed5307
+      type: file
+      url: https://files.pythonhosted.org/packages/8f/2e/cf6accf7415237d6faeeebdc7832023c90e0282aa16fd3263db0eb4715ec/future-0.18.3.tar.gz
+  - build-commands:
+    - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+      --prefix=${FLATPAK_DEST} "ffmpeg-progress-yield" --no-build-isolation
+    buildsystem: simple
+    name: python3-ffmpeg-progress-yield
+    sources:
+    - sha256: f8fe0bc342cbe443e18b68ccb3e3067f5211ead0331cbfd7adbb50a7a9f00d57
+      type: file
+      url: https://files.pythonhosted.org/packages/c9/b5/2d262c84f18d1b230a7b916bb8e0158642b6b803d91f5f9717d8d32ec36b/ffmpeg_progress_yield-0.7.0-py2.py3-none-any.whl
 
   - name: aviator
     builddir: true
     buildsystem: meson
     sources:
       - type: git
-        url: https://github.com/natesales/aviator
-        commit: cc5dd9b864abd7ee23f1d7e07af93d6a01120207
+        url: https://github.com/gianni-rosato/aviator
+        commit: c871c24e19d1e2e428ecf54f4e8057cab176d6f0
