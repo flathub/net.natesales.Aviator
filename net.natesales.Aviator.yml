@@ -46,6 +46,42 @@ modules:
         url: http://ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz
         sha256: 619e706d662c8420859832ddc259cd4d4096a48a2ce1eefd052db9e440eef3dc
 
+  - name: zimg
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://github.com/sekrit-twc/zimg/archive/refs/tags/release-3.0.4.tar.gz
+        sha256: 219d1bc6b7fde1355d72c9b406ebd730a4aed9c21da779660f0a4c851243e32f
+
+  - name: vapoursynth
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://github.com/vapoursynth/vapoursynth/archive/refs/tags/R61.tar.gz
+        sha256: a5d4feeb056679dd1204153250d7c1d38e5a639e995d3c4e3a8e2e8fe1425b75
+
+  - name: av1an
+    buildsystem: simple
+    sources:
+      - av1an-sources.json
+      - type: archive
+        url: https://github.com/master-of-zen/Av1an/archive/refs/tags/0.4.0-release.tar.gz
+        sha256: c59b0965aea45ea8aea08f7c779ad61e5e59858d65cf660e3ad4d3d3908fcbf0
+    build-commands:
+      - cargo build --release --verbose
+      - install target/release/av1an /app/bin/av1an
+
+  - name: rav1e
+    buildsystem: simple
+    sources:
+      - rav1e-sources.json
+      - type: archive
+        url: https://github.com/xiph/rav1e/archive/refs/tags/v0.6.3.tar.gz
+        sha256: 660a243dd9ee3104c0844a7af819b406193a7726614a032324557f81bb2bebaa
+    build-commands:
+      - cargo build --release --verbose
+      - install target/release/rav1e /app/bin/rav1e
+
   - name: aviator
     builddir: true
     buildsystem: meson
