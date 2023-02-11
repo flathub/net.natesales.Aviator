@@ -20,6 +20,7 @@ build-options:
   env:
     CARGO_HOME: /run/build/done/cargo
     PROTOC: /app/bin/protoc
+    RUSTFLAGS: -C target-cpu=generic
   prepend-ld-library-path: /usr/lib/sdk/llvm14/lib
   prepend-path: /usr/lib/sdk/llvm14/bin
 
@@ -68,7 +69,8 @@ modules:
         url: https://github.com/master-of-zen/Av1an/archive/refs/tags/0.4.0-release.tar.gz
         sha256: c59b0965aea45ea8aea08f7c779ad61e5e59858d65cf660e3ad4d3d3908fcbf0
     build-commands:
-      - cargo build --release --verbose
+      - cargo --offline fetch --manifest-path Cargo.toml --verbose
+      - cargo --offline build --release --verbose
       - install target/release/av1an /app/bin/av1an
 
   - name: rav1e
@@ -79,7 +81,8 @@ modules:
         url: https://github.com/xiph/rav1e/archive/refs/tags/v0.6.3.tar.gz
         sha256: 660a243dd9ee3104c0844a7af819b406193a7726614a032324557f81bb2bebaa
     build-commands:
-      - cargo build --release --verbose
+      - cargo --offline fetch --manifest-path Cargo.toml --verbose
+      - cargo --offline build --release --verbose
       - install target/release/rav1e /app/bin/rav1e
 
   - name: aviator
