@@ -37,8 +37,8 @@ cleanup:
 modules:
   - name: ffmpeg
     config-opts:
+      - "--enable-static"
       - "--enable-libdav1d"
-      - "--enable-libsvtav1"
       - "--enable-libopus"
     buildsystem: autotools
     sources:
