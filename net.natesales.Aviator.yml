@@ -62,6 +62,9 @@ modules:
         sha256: a5d4feeb056679dd1204153250d7c1d38e5a639e995d3c4e3a8e2e8fe1425b75
 
   - name: av1an
+    build-options:
+      env:
+        CARGO_HOME: /run/build/av1an/cargo
     buildsystem: simple
     sources:
       - av1an-sources.json
