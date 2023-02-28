@@ -18,7 +18,6 @@ finish-args:
 build-options:
   append-path: /usr/lib/sdk/rust-stable/bin
   env:
-    CARGO_HOME: /run/build/done/cargo
     PROTOC: /app/bin/protoc
     RUSTFLAGS: -C target-cpu=generic
   prepend-ld-library-path: /usr/lib/sdk/llvm14/lib
@@ -77,6 +76,9 @@ modules:
       - install target/release/av1an /app/bin/av1an
 
   - name: rav1e
+    build-options:
+      env:
+        CARGO_HOME: /run/build/rav1e/cargo
     buildsystem: simple
     sources:
       - rav1e-sources.json
