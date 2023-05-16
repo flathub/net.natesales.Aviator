@@ -90,4 +90,4 @@ modules:
     sources:
       - type: git
         url: https://github.com/gianni-rosato/aviator
-        commit: 157d4a581f5384f38c2ab0a63f207ef829a55e20
+        commit: 9c66f2a220ee9c1003946a0553e34bd6170ac1b0
