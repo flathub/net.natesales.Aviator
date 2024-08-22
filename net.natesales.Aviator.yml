@@ -42,8 +42,6 @@ modules:
       - "-DCMAKE_C_FLAGS=-O3 -flto"
       - "-DBUILD_SHARED_LIBS=ON"
       - "-DBUILD_APPS=OFF"
-      - "-DBUILD_DEC=OFF"
-      - "-DBUILD_ENC=ON"
       - "-DBUILD_TESTING=OFF"
     cleanup:
       - "/include"
@@ -51,7 +49,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/gianni-rosato/svt-av1-psy
-        commit: 5471bd78311d70ab4691af1ae54fd80e25f214f5
+        commit: f9dc2b747f31ea36053ed6d7f47b86bb3ca461f7
 
   - name: ffmpeg
     config-opts:
@@ -64,7 +62,7 @@ modules:
     sources:
       - type: git
         url: https://git.ffmpeg.org/ffmpeg.git
-        commit: 083443d67cb159ce469e5d902346b8d0c2cd1c93
+        commit: e3a61e91030696348b56361bdf80ea358aef4a19
 
   - name: nnedi3_weights.bin
     buildsystem: simple
@@ -103,4 +101,4 @@ modules:
     sources:
       - type: git
         url: https://github.com/gianni-rosato/aviator
-        commit: fd6280f7e495634413d0f2b0e90e3a1d428b346e
+        commit: 43533552cfa6a6cd9eb87c1875d3cd2a01778e7d
