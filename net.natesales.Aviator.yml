@@ -49,7 +49,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/gianni-rosato/svt-av1-psy
-        commit: 0fb626ba370f006564396c49f2a97330ab330e1a
+        commit: ec65071b65ee70078229182ce6e1d0f6a4aa1a47
 
   - name: ffmpeg
     build-options:
@@ -107,4 +107,4 @@ modules:
     sources:
       - type: git
         url: https://github.com/gianni-rosato/aviator
-        commit: ebfe078f287cf7b79f0a92b76d0a33cf1d9d9e06
+        commit: d62aae3eee7b2a62c01e48d46aa47a5253bc558b
