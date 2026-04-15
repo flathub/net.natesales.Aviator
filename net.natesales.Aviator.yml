@@ -61,6 +61,10 @@ modules:
       - --enable-libopus
       - --enable-libsvtav1
     buildsystem: autotools
+    cleanup:
+      - /bin/ffplay
+      - /bin/ffprobe
+      - /share/ffmpeg/examples
     sources:
       - type: git
         url: https://git.ffmpeg.org/ffmpeg.git
